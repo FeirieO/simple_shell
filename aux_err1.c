@@ -109,3 +109,36 @@ char *err_not_found(data_shell *datash)
 	free(vers_str);
 	return (errmsg);
 }
+
+/**
+ * errmsg_exit - generic err message for exit in get_exit
+ * @datash: data relevant to counters and arguments
+ * Return: pointer to the err message or NULL if memory allocation fails
+ */
+char *errmsg_exit(data_shell *datash)
+{
+	int length;
+	char *errmsg;
+	char *vers_str;
+
+	vers_str = aux_itoa(datash->counter);
+	length = _strlen(datash->av[0]) + _strlen(vers_str);
+	length += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
+	errmsg = malloc(sizeof(char) * (length + 1));
+	if (errmsg == 0)
+	{
+		free(vers_str);
+		return (NULL);
+	}
+	_strcpy(errmsg, datash->av[0]);
+	_strcat(errmsg, ": ");
+	_strcat(errmsg, vers_str);
+	_strcat(errmsg, ": ");
+	_strcat(errmsg, datash->args[0]);
+	_strcat(errmsg, ": Illegal number: ");
+	_strcat(errmsg, datash->args[1]);
+	_strcat(errmsg, "\n\0");
+	free(vers_str);
+
+	return (errmsg);
+}
