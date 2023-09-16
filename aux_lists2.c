@@ -36,3 +36,25 @@ r_var *add_var_node(r_var **head, int l_var, char *val, int l_val)
 	}
 	return (*head);
 }
+
+/**
+ * free_var_list - frees a r_var linked list.
+ * @head: pointer to the head of the linked list.
+ * Return: NULL
+ */
+void free_var_list(r_var **head)
+{
+	r_var *tempNode;
+	r_var *curr;
+
+	if (head != NULL)
+	{
+		curr = *head;
+		while ((tempNode = curr) != NULL)
+		{
+			curr = curr->next;
+			free(tempNode);
+		}
+		*head = NULL;
+	}
+}
