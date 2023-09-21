@@ -148,7 +148,7 @@ int split_commands(data_shell *datash, char *input)
 	{
 		datash->input = list_l->line;
 		datash->args = split_line(datash->input);
-		loop = exec_line(datash);
+		loop = execs_lines(datash);
 		free(datash->args);
 
 		if (loop == 0)
@@ -210,3 +210,4 @@ char **split_line(char *input)
 
 	return (tokens);
 }
+

@@ -13,8 +13,8 @@ int (*gets_builtin(char *cmds))(data_shell *)
 		{ "exit", exit_shell },
 		{ "setenv", _setenv },
 		{ "unsetenv", _unsetenv },
-		{ "cd", cd_shell },
-		{ "help", get_help },
+		{ "cd", cd_shl },
+		{ "help", gets_helps},
 		{ NULL, NULL }
 	};
 	int j;

@@ -27,7 +27,7 @@ int gets_err(data_shell *datash, int eval)
 		if (_strcmp("exit", datash->args[0]) == 0)
 			err = errmsg_exit(datash);
 		else if (_strcmp("cd", datash->args[0]) == 0)
-			err = errmsg__cd(datash);
+			err = errmsg_cd(datash);
 		break;
 	}
 

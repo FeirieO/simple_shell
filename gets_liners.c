@@ -80,7 +80,7 @@ ssize_t gets_liner(char **liners, size_t *n, FILE *streamer)
 		input++;
 	}
 	buffers[input] = '\0';
-	brings_lineers(liners, n, buffers, input);
+	brings_liners(liners, n, buffers, input);
 	retval = input;
 	if (i != 0)
 		input = 0;

@@ -22,7 +22,7 @@ int exit_shell(data_shell *datashe)
 
 		if (!is_digit || str_len > 10 || big_number)
 		{
-			get_error(datashe, 2);
+			gets_err(datashe, 2);
 			datashe->status = 2;
 			return (1);
 		}
