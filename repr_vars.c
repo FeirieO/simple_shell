@@ -21,7 +21,7 @@ void checks_envr(r_var **h, char *in, data_shell *data)
 			if (_envr[row][chr] == '=')
 			{
 				lval = _strlen(_envr[row] + chr + 1);
-				add_rvar_node(h, j, _envr[row] + chr + 1, lval);
+				add_var_node(h, j, _envr[row] + chr + 1, lval);
 				return;
 			}
 
@@ -38,7 +38,7 @@ void checks_envr(r_var **h, char *in, data_shell *data)
 			break;
 	}
 
-	add_rvar_node(h, j, NULL, 0);
+	add_var_node(h, j, NULL, 0);
 }
 
 /**
@@ -62,19 +62,19 @@ int checks_vrs(r_var **h, char *in, char *st, data_shell *data)
 		if (in[i] == '$')
 		{
 			if (in[i + 1] == '?')
-				add_rvar_node(h, 2, st, lst), i++;
+				add_var_node(h, 2, st, lst), i++;
 			else if (in[i + 1] == '$')
-				add_rvar_node(h, 2, data->pid, lpd), i++;
+				add_var_node(h, 2, data->pid, lpd), i++;
 			else if (in[i + 1] == '\n')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\0')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ' ')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == '\t')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else if (in[i + 1] == ';')
-				add_rvar_node(h, 0, NULL, 0);
+				add_var_node(h, 0, NULL, 0);
 			else
 				checks_envr(h, in + i, data);
 		}
@@ -177,7 +177,8 @@ char *repr_vars(char *input, data_shell *datash)
 
 	free(input);
 	free(status);
-	free_rvar_list(&head);
+	free_var_list(&head);
 
 	return (new_input);
 }
+

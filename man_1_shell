@@ -1,0 +1,76 @@
+.MANPAGE FOR SIMPLE SHELL
+
+.Created by Chukwuekem Favour and Ifechukwu Anyika
+
+.TH HSH 1 "SEPTEMBER 2023" "ALX Africa" "SHELL - Simple Shell Manual Page"
+
+.SH NAME
+hsh - a straightforward UNIX command interpreter
+
+.SH SYNOPSIS
+sodash [filename]
+
+.SH COPYRIGHT
+Copyright (C) 2023 by Chukwuekem Favour and Ifechukwu Anyika
+
+.SH DESCRIPTION
+hsh is a shell language interpreter compatible with sh. It executes commands from standard input or a file.
+
+.SH ARGUMENTS
+If any arguments remain after option processing, the first argument is assumed to be the name of a file containing shell commands. hsh reads and executes commands from this file and then exits. The exit status of hsh is the exit status of the last executed command in the script. If no commands are executed, the exit status is 0. Initially, the file is sought in the current directory. If not found, the shell searches the directories in PATH.
+
+.SH INVOCATION
+Sodash is launched with standard input connected to the terminal, determining interactive mode. Non-interactive options can also be executed.
+
+When Sodash is run interactively, a prompt "^-^" is displayed to read commands, and command line arguments are treated as the first argument.
+
+.SH DEFINITIONS
+Throughout this document, the following definitions are used:
+
+- blank: A space or tab.
+- word: A sequence of characters treated as a single unit by the shell (also known as a token).
+- name: A word consisting of alphanumeric characters and underscores, beginning with an alphabetic character or underscore (also referred to as an identifier).
+- control operator: A token that performs a control function, including symbols like ||, &, &&, ;, and ;;.
+
+.SH COMMAND EXECUTION
+After splitting a command into words, if it forms a simple command with optional arguments, the following actions are taken:
+
+- If the command name lacks slashes, the shell attempts to locate it. It checks for a shell function with that name and invokes it. If no function matches, it searches for it in the list of shell builtins. If found, the builtin is executed.
+- If the name is neither a function nor a builtin and lacks slashes, hsh searches each PATH directory for an executable file with that name. It utilizes a hash table to remember full pathnames of executable files. A full search of PATH directories occurs only if the command isn't in the hash table. If the search fails, the shell looks for a defined shell function named "command not found." If present, it is invoked with the original command and arguments, and its exit status becomes the shell's exit status. If that function isn't defined, an error message is printed, and the exit status is 127.
+- If the search succeeds or if the command name contains slashes, the shell executes the named program in a separate environment. Argument 0 is set to the given name, and remaining arguments are set accordingly.
+
+.SH ENVIRONMENT
+hsh copies the environment from the parent process where it was executed, following the format of name=value pairs. The shell provides ways to manipulate the environment, including exporting variables and functions to child processes.
+
+.SH EXIT STATUS
+The exit status of a command executed by Sodash is the value returned by the waitpid system call or its equivalent. A zero exit status indicates success, while a non-zero status indicates failure. If a command isn't found, the child process created for it returns a status of 127. Builtins return zero on success and one or two on incorrect usage, accompanied by an error message.
+
+.SH BUILTINS
+Supported builtin commands include:
+
+.B env
+- Display the current environment.
+
+.B setenv [Variable] [Value]
+- Create or modify an environment variable.
+
+.B unsetenv [Variable]
+- Remove an environmental variable.
+
+.B exit [Status]
+- Exit the shell.
+
+.B cd [Directory]
+- Change the process's current directory. If no argument is given, it interprets as "cd $HOME." If "- " is given, it interprets as "cd $OLDPWD." PWD and OLDPWD environment variables are updated.
+
+.B help
+- Display help messages for builtin commands.
+
+.SH SEE ALSO
+References to related commands and functions, including access(2), chdir(2), execve(2), and more.
+
+Sodash provides fundamental functionality of the sh shell. This manual page is based on the bash(1) man page.
+
+.SH AUTHORS
+Chukwuekem Favour and Ifechukwu Anyika
+

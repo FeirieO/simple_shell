@@ -3,31 +3,31 @@
 /**
  * gets_err - function that calls the err
  * according the builtin, syntax or permission
- * @datashe: Data structure that contains arguments
+ * @datash: Data structure that contains arguments
  * @eval: the err value
  * Return: err
  */
 
-int gets_err(data_shell *datashe, int eval)
+int gets_err(data_shell *datash, int eval)
 {
 	char *err;
 
 	switch (eval)
 	{
 	case -1:
-		err = err_env(datashe);
+		err = err_env(datash);
 		break;
 	case 126:
-		err = err_path_126(datashe);
+		err = errmsg_path(datash);
 		break;
 	case 127:
-		err = err_not_found(datashe);
+		err = err_not_found(datash);
 		break;
 	case 2:
-		if (_strcmp("exit", datashe->args[0]) == 0)
-			err = err_exit_shell(datashe);
-		else if (_strcmp("cd", datashe->args[0]) == 0)
-			err = err_gets_cd(datashe);
+		if (_strcmp("exit", datash->args[0]) == 0)
+			err = errmsg_exit(datash);
+		else if (_strcmp("cd", datash->args[0]) == 0)
+			err = errmsg__cd(datash);
 		break;
 	}
 
@@ -37,6 +37,6 @@ int gets_err(data_shell *datashe, int eval)
 		free(err);
 	}
 
-	datashe->status = eval;
+	datash->status = eval;
 	return (eval);
 }

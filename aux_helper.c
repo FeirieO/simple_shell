@@ -33,6 +33,19 @@ void aux_helper_setenv(void)
 }
 
 /**
+ * aux_helper_unsetenv - provides information for the builtin unsetenv
+ * Return: null
+ */
+void aux_helper_unsetenv(void)
+{
+	char *help = "unsetenv: unsetenv (const char *name)\n\t";
+
+	write(STDOUT_FILENO, help, _strlen(help));
+	help = "Remove an entry completely from the environment\n";
+	write(STDOUT_FILENO, help, _strlen(help));
+}
+
+/**
  * aux_helper_gen - entry point for information for the help builtin
  * Return: NULL
  */
