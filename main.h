@@ -174,3 +174,58 @@ char *cpy_info(char *name, char *value);
 void set_env(char *name, char *value, data_shell *datash);
 int _setenv(data_shell *datash);
 int _unsetenv(data_shell *datash);
+<<<<<<< HEAD
+=======
+
+/* cd.c */
+void cd_dot(data_shell *datash);
+void cd_to(data_shell *datash);
+void cd_previous(data_shell *datash);
+void cd_to_home(data_shell *datash);
+
+/* cd_shl.c */
+int cd_shl(data_shell *datash);
+
+/* gets_builtin1.c */
+int (*gets_builtin(char *cmds))(data_shell *);
+
+/* exit_shell1.c */
+int exit_shell(data_shell *datash);
+
+/* aux_stdlibs.c */
+int get_length(int b);
+char *aux_itao(int b);
+int _atoi(char *t);
+
+/* aux_err1.c */
+char *strcon_cd(data_shell *datash, char *msg, char *errmsg, char *vers_str);
+char *errmsg_cd(data_shell *datash);
+char *err_not_found(data_shell *datash);
+char *errmsg_exit(data_shell *datash);
+
+/* aux_err2.c */
+char *err_env(data_shell *datash);
+char *errmsg_path(data_shell *datash);
+
+/* gets_err.c */
+int gets_err(data_shell *datash, int eval);
+
+/* gets_sign.c */
+void gets_sign(int signal);
+
+/* aux_helper.c */
+void aux_helper_env(void);
+void aux_helper_setenv(void);
+void aux_helper_unsetenv(void);
+void aux_helper_gen(void);
+void aux_helper_exit(void);
+
+/* aux_helper2.c */
+void aux_helper(void);
+void aux_helper_alias(void);
+void aux_helper_cd(void);
+
+/* gets_helps1.c */
+int gets_helps(data_shell *datash);
+
+#endif

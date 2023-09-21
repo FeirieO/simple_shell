@@ -49,7 +49,7 @@ char *errmsg_cd(data_shell *datash)
 	int length, len_identifier;
 	char *errmsg, *vers_str, *msg;
 
-	vers_str = aux_itoa(datash->counter);
+	vers_str = aux_itao(datash->counter);
 	if (datash->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
