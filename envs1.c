@@ -34,7 +34,7 @@ int cmprs_env(const char *nenvs, const char *name)
  * _getenv - get the value of an environment variable.
  * @name: Name of the environment variable
  * @_environ: pointer to the environment variables array.
- * Return: Pointer to the value of the environment variable if found, 
+ * Return: Pointer to the value of the environment variable if found,
  * otherwise NULL.
  */
 
