@@ -174,6 +174,8 @@ char *cpy_info(char *name, char *value);
 void set_env(char *name, char *value, data_shell *datash);
 int _setenv(data_shell *datash);
 int _unsetenv(data_shell *datash);
+<<<<<<< HEAD
+=======
 
 /* cd.c */
 void cd_dot(data_shell *datash);
