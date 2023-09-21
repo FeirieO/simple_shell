@@ -219,11 +219,4 @@ void aux_helper_cd(void);
 /* gets_helps1.c */
 int gets_helps(data_shell *datash);
 
-/* split_func.c */
-char *swap_char(char *input, int bool);
-void add_nodes(sep_list **head_s, line_list **head_l, char *input);
-void go_next(sep_list **list_s, line_list **list_l, data_shell *datash);
-int split_commands(data_shell *datash, char *input);
-char **split_line(char *input);
-
 #endif

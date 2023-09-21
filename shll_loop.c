@@ -67,7 +67,6 @@ void shll_loop(data_shell *datash)
 				continue;
 			}
 			input = repr_vars(input, datash);
-			loop = split_commands(datash, input);
 			datash->counter += 1;
 			free(input);
 		}
