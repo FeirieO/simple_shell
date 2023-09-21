@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strcon_cd - Write a function that concatenates msg to create an err msg
+ * strcon_cd - Write a function that concatenates message components to create an err message
  *
  * @datash: data relevant to the current directory
  * @msg: message to be included in the err message.
@@ -43,13 +43,12 @@ char *strcon_cd(data_shell *datash, char *msg, char *errmsg, char *vers_str)
  * @datash: data relevant to the current directory
  * Return: pointer to the err message or NULL if memory allocation fails
  */
-
 char *errmsg_cd(data_shell *datash)
 {
 	int length, len_identifier;
 	char *errmsg, *vers_str, *msg;
 
-	vers_str = aux_itao(datash->counter);
+	vers_str = aux_itoa(datash->counter);
 	if (datash->args[1][0] == '-')
 	{
 		msg = ": Illegal option ";
@@ -81,7 +80,7 @@ char *errmsg_cd(data_shell *datash)
 /**
  * err_not_found - generic err message for command not found
  * @datash: data relevant (counter, arguments)
- * Return: pointer to the err messages
+ * Return: err messages
  */
 char *err_not_found(data_shell *datash)
 {

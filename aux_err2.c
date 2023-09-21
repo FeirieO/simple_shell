@@ -2,7 +2,7 @@
 
 /**
  * err_env - generate an err messages for env.
- * @datash: data relevant to counters and arguments
+ * @datash: data relevant to counters and arguments)
  * Return: pointer to the err messages.
  */
 char *err_env(data_shell *datash)
@@ -13,7 +13,7 @@ char *err_env(data_shell *datash)
 	char *msg;
 
 	vers_str = aux_itoa(datash->counter);
-	msg = ": Unable to remove or add from environment\n";
+	msg = ": Unable to add/remove from environment\n";
 	length = _strlen(datash->av[0]) + _strlen(vers_str);
 	length += _strlen(datash->args[0]) + _strlen(msg) + 4;
 	errmsg = malloc(sizeof(char) * (length + 1));
@@ -35,10 +35,9 @@ char *err_env(data_shell *datash)
 
 	return (errmsg);
 }
-
 /**
- * errmsg_path - Generates an err msg for permission denied (error code 126)
- * @datash: data relevants to current command exec (counter, arguments).
+ * errmsg_path - Generates an error message for permission denied (error code 126)
+ * @datash: data relevants to the current command execution (counter, arguments).
  *
  * Return: pointer to the err msg string or NULL if memory allocation fails.
  */
@@ -68,3 +67,4 @@ char *errmsg_path(data_shell *datash)
 	free(vers_str);
 	return (errmsg);
 }
+
