@@ -1,89 +1,88 @@
 #include "main.h"
 
 /**
- * add_sept_node - appends a separator node to the end
- * of a sept_lists.
- * @head: pointer to the head of the linked lists.
- * @sept: separators char to add (; | &).
- * Return: address of the heads of the sep list.
+ * add_sep_node_end - It adds separator found at the end
+ * of a sep_lists.
+ * @head: head of the linked lists.
+ * @sep: separators found (; | &).
+ * Return: address of the heads.
  */
-sep_list *add_sep_node(sep_list **head, char sept)
+sep_list *add_sep_node_end(sep_list **head, char sep)
 {
-	sep_list *newNode, *tempNode;
+	sep_list *new, *temp;
 
-	newNode = malloc(sizeof(sep_list));
-	if (newNode == NULL)
+	new = malloc(sizeof(sep_list));
+	if (new == NULL)
 		return (NULL);
 
-	newNode->separator = sept;
-	newNode->next = NULL;
-	tempNode = *head;
+	new->separator = sep;
+	new->next = NULL;
+	temp = *head;
 
-	if (tempNode == NULL)
+	if (temp == NULL)
 	{
-		*head = newNode;
+		*head = new;
 	}
 	else
 	{
-		while (tempNode->next != NULL)
-			tempNode = tempNode->next;
-		tempNode->next = newNode;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
 
 	return (*head);
 }
 
 /**
- * free_sep_list - frees a separator lists
- * @head: pointer to the head of the linked lists.
+ * free_sep_list - frees a sep_lists
+ * @head: head of the linked lists.
  * Return: null.
  */
-
 void free_sep_list(sep_list **head)
 {
-	sep_list *tempNode;
-	sep_list *currNode;
+	sep_list *temp;
+	sep_list *curr;
 
 	if (head != NULL)
 	{
-		currNode = *head;
-		while ((tempNode = currNode) != NULL)
+		curr = *head;
+		while ((temp = curr) != NULL)
 		{
-			currNode = currNode->next;
-			free(tempNode);
+			curr = curr->next;
+			free(temp);
 		}
 		*head = NULL;
 	}
 }
 
 /**
- * add_line_node_end - appends a command line at the end
+ * add_line_node_end - adds a command line at the end
  * of a line_lists.
- * @head: pointer to the head of the linked lists.
- * @line: command lines string to add.
+ * @head: head of the linked lists.
+ * @line: command lines.
  * Return: address of the heads.
  */
 line_list *add_line_node_end(line_list **head, char *line)
 {
-	line_list *newNode, *tempNode;
+	line_list *new, *temp;
 
-	newNode = malloc(sizeof(line_list));
-	if (newNode == NULL)
+	new = malloc(sizeof(line_list));
+	if (new == NULL)
 		return (NULL);
 
-	newNode->line = line;
-	newNode->next = NULL;
-	tempNode = *head;
+	new->line = line;
+	new->next = NULL;
+	temp = *head;
 
-	if (tempNode == NULL)
+	if (temp == NULL)
 	{
-		*head = newNode;
+		*head = new;
 	}
 	else
 	{
-		while (tempNode->next != NULL)
-			tempNode = tempNode->next;
-		tempNode->next = newNode;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
 	}
 
 	return (*head);
@@ -91,21 +90,21 @@ line_list *add_line_node_end(line_list **head, char *line)
 
 /**
  * free_line_list - frees a line_lists
- * @head: pointer to the heads of the linked lists.
- * Return: NULL
+ * @head: heads of the linked lists.
+ * Return: null.
  */
 void free_line_list(line_list **head)
 {
-	line_list *tempNode;
-	line_list *currNode;
+	line_list *temp;
+	line_list *curr;
 
 	if (head != NULL)
 	{
-		currNode = *head;
-		while ((tempNode = currNode) != NULL)
+		curr = *head;
+		while ((temp = curr) != NULL)
 		{
-			currNode = currNode->next;
-			free(tempNode);
+			curr = curr->next;
+			free(temp);
 		}
 		*head = NULL;
 	}
